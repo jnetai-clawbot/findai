@@ -1,0 +1,71 @@
+FindAI - AI-Powered File Search
+=================================
+Initial Release v1.0.0
+Built: $(date)
+
+Project Structure Created:
+/app/src/main/java/com/jnetaol/findai/
+├── FindAIApp.kt              - Application class with DB init
+├── MainActivity.kt           - Entry point with permission handling
+├── FindAINavHost.kt          - Navigation graph (home, results, detail, index, settings)
+├── data/
+│   ├── model/Models.kt       - Entities: IndexedFile, SearchQuery, SearchResult, IndexStats
+│   └── db/
+│       ├── DAOs.kt           - FileDao + SearchDao with full CRUD operations
+│       └── AppDatabase.kt    - Room database singleton
+├── engine/
+│   ├── FileIndexer.kt        - Scans device storage, indexes file metadata
+│   ├── NLSearchEngine.kt     - Natural language query parser with scoring
+│   └── ContentReader.kt      - Text file reader + PDF text extraction
+├── logger/
+│   └── DebugLogger.kt        - Persistent debug logger with FA-xxx codes
+├── ui/
+│   ├── theme/
+│   │   ├── Color.kt          - Blue/indigo neon colors for dark theme
+│   │   └── Theme.kt          - Material Design 3 dark theme
+│   ├── components/
+│   │   └── Components.kt     - GlowButton, NeonCard, SectionHeader, EmptyState,
+│   │                           StatusBadge, FileCard, SearchResultRow, FilterChips, FileTypeIcon
+│   └── screens/
+│       ├── AppViewModel.kt   - Central ViewModel for search, index, DB operations
+│       ├── home/HomeScreen.kt          - Search bar with suggestions, recent searches, quick filters
+│       ├── results/ResultsScreen.kt    - Search results with filtering and sorting
+│       ├── index/IndexScreen.kt        - Scan progress, files by category, re-index
+│       ├── detail/FileDetailScreen.kt  - File info, content preview, open/share/delete actions
+│       └── settings/SettingsScreen.kt  - About, Check For Updates, Share, debug logging toggle
+├── res/
+│   ├── drawable/ic_launcher_*.xml     - Adaptive icon (neon blue search lens)
+│   ├── mipmap-anydpi-v26/ic_launcher*.xml
+│   ├── values/strings.xml, themes.xml
+│   └── xml/searchable.xml, file_paths.xml
+├── AndroidManifest.xml       - Permissions, activity, FileProvider
+└── proguard-rules.pro        - Keep annotations and models
+
+Root files:
+├── build.gradle.kts          - AGP 8.2.2, Kotlin 1.9.22, KSP
+├── settings.gradle.kts       - Repository config
+├── gradle.properties         - AndroidX, jvm args, caching
+├── gradle/wrapper/gradle-wrapper.properties - Gradle 8.5
+├── .gitignore
+├── README.md
+├── LICENSE (MIT)
+├── CHANGELOG.md
+├── .github/workflows/
+│   ├── build-debug.yml       - Build debug APK on push
+│   └── build-release.yml     - Signed release APK on tag v* or manual
+
+Key Architecture Decisions:
+- MinSdk 29, TargetSdk 34, compileSdk 34, ARM64 only (ndk abiFilter)
+- Room with Flow for reactive data
+- NLSearchEngine parses: keywords, date refs (yesterday/last week/last month),
+  file types (PDF, image, video, audio, code, archive), size hints (large/small)
+- Scoring: exact_name=20, name_prefix=15, extension=12, name_contains=10, content=5
+- FileIndexer scans Downloads, Documents, DCIM, Pictures, Movies, Music with depth=10
+- ContentReader reads text files up to 100KB, basic PDF text extraction from streams
+- DebugLogger with FA-xxx error codes (FA-001 through FA-104)
+- All navigation via Jetpack Navigation Compose
+- FileProvider for secure file sharing/opening
+- Dark Material Design 3 with NeonBlue (#4FC3F7), NeonIndigo (#5C6BC0) accents
+
+NOTE: gradlew binary script needs to be added via `gradle wrapper` command.
+Run: gradle wrapper --gradle-version 8.5
