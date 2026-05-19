@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.jnetaol.findai.ui.components.*
+import com.jnetaol.findai.ui.screens.AppViewModel
 import com.jnetaol.findai.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
