@@ -249,6 +249,7 @@ fun SearchResultRow(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FilterChips(
     labels: List<String>,
