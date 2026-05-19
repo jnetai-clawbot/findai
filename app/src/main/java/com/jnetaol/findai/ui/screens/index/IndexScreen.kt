@@ -66,11 +66,11 @@ fun IndexScreen(navController: NavController, viewModel: AppViewModel = viewMode
                         Spacer(Modifier.height(12.dp))
 
                         if (isIndexing && !progress.isComplete) {
+                            val currentProgress = if (progress.totalFiles > 0)
+                                progress.filesProcessed.toFloat() / progress.totalFiles.toFloat()
+                            else 0f
                             LinearProgressIndicator(
-                                progress = {
-                                    if (progress.totalFiles > 0) progress.filesProcessed.toFloat() / progress.totalFiles.toFloat()
-                                    else 0f
-                                },
+                                progress = currentProgress,
                                 modifier = Modifier.fillMaxWidth(),
                                 color = NeonBlue,
                                 trackColor = DarkSurfaceVariant
