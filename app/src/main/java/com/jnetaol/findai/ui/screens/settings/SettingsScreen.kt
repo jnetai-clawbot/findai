@@ -159,7 +159,7 @@ fun SettingsScreen(navController: NavController, viewModel: AppViewModel = viewM
                         onClick = {
                             try {
                                 context.startActivity(
-                                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jnetaol/FindAI/releases"))
+                                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jnetai-clawbot/findai/releases"))
                                 )
                             } catch (e: Exception) {
                                 Toast.makeText(context, "Cannot open link", Toast.LENGTH_SHORT).show()
