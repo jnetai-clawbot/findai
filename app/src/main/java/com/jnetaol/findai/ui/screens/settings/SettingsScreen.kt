@@ -74,13 +74,13 @@ fun SettingsScreen(navController: NavController, viewModel: AppViewModel = viewM
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
-                        "Made By jnetaol.com",
+                        "Made By jnetai.com",
                         style = MaterialTheme.typography.bodySmall,
                         color = NeonBlue,
                         modifier = Modifier.clickable {
                             try {
                                 context.startActivity(
-                                    Intent(Intent.ACTION_VIEW, Uri.parse("https://jnetaol.com"))
+                                    Intent(Intent.ACTION_VIEW, Uri.parse("https://jnetai.com"))
                                 )
                             } catch (e: Exception) {
                                 Toast.makeText(context, "Cannot open link", Toast.LENGTH_SHORT).show()
@@ -174,7 +174,7 @@ fun SettingsScreen(navController: NavController, viewModel: AppViewModel = viewM
                         onClick = {
                             val intent = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"
-                                putExtra(Intent.EXTRA_TEXT, "Check out FindAI - AI-Powered File Search! https://jnetaol.com")
+                                putExtra(Intent.EXTRA_TEXT, "Check out FindAI - AI-Powered File Search! https://jnetai.com")
                                 putExtra(Intent.EXTRA_SUBJECT, "FindAI - AI File Search")
                             }
                             context.startActivity(Intent.createChooser(intent, "Share FindAI"))

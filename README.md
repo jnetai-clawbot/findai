@@ -16,4 +16,4 @@ Search your files naturally: "that PDF about nginx", "video from last week", "la
 - Room 2.6.1, Material Design 3 (Dark)
 - MinSdk 29, TargetSdk 34, ARM64 only
 
-## Made By [jnetaol.com](https://jnetaol.com)
+## Made By [jnetai.com](https://jnetai.com)
